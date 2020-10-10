@@ -19,6 +19,7 @@ public class MyLinkedListTest {
 		boolean result = myLinkedList.head.equals(thirdNode) && myLinkedList.head.getNext().equals(secondNode)
 				&& myLinkedList.tail.equals(firstNode);
 		Assert.assertTrue(result);
+		myLinkedList.printMyNodes();
 	}
 
 	@Test
@@ -33,6 +34,7 @@ public class MyLinkedListTest {
 		boolean result = myLinkedList.head.equals(thirdNode) && myLinkedList.head.getNext().equals(secondNode)
 				&& myLinkedList.tail.equals(firstNode);
 		Assert.assertTrue(result);
+		myLinkedList.printMyNodes();
 	}
 
 	@Test
@@ -47,6 +49,7 @@ public class MyLinkedListTest {
 		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
 				&& myLinkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
+		myLinkedList.printMyNodes();
 	}
 
 	@Test
@@ -59,11 +62,11 @@ public class MyLinkedListTest {
 		myLinkedList.append(secondNode);
 		myLinkedList.append(thirdNode);
 		myLinkedList.pop();
-		boolean result = myLinkedList.head.equals(secondNode)
-				&& myLinkedList.tail.equals(thirdNode);
+		boolean result = myLinkedList.head.equals(secondNode) && myLinkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
+		myLinkedList.printMyNodes();
 	}
-	
+
 	@Test
 	public void deletingLastElementTest() {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
@@ -76,8 +79,9 @@ public class MyLinkedListTest {
 		myLinkedList.popLast();
 		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode);
 		Assert.assertTrue(result);
+		myLinkedList.printMyNodes();
 	}
-	
+
 	@Test
 	public void searchElementTest() {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
@@ -88,9 +92,10 @@ public class MyLinkedListTest {
 		myLinkedList.append(secondNode);
 		myLinkedList.append(thirdNode);
 		MyNode<Integer> search = (MyNode<Integer>) myLinkedList.search(30);
-		assertEquals(secondNode, search);
+		Assert.assertEquals(secondNode, search);
+		myLinkedList.printMyNodes();
 	}
-	
+
 	@Test
 	public void searchAndInsertElementTest() {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
@@ -101,10 +106,11 @@ public class MyLinkedListTest {
 		myLinkedList.append(secondNode);
 		myLinkedList.append(thirdNode);
 		MyNode<Integer> fourthNode = new MyNode<Integer>(40);
-		MyNode<Integer> search = (MyNode<Integer>) myLinkedList.searchAndInsert(30,fourthNode);
-		assertEquals(secondNode, search);
+		MyNode<Integer> search = (MyNode<Integer>) myLinkedList.searchAndInsert(30, fourthNode);
+		Assert.assertEquals(secondNode, search);
+		myLinkedList.printMyNodes();
 	}
-	
+
 	@Test
 	public void deleteAndGetSizeOfListTest() {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
@@ -116,8 +122,30 @@ public class MyLinkedListTest {
 		myLinkedList.append(secondNode);
 		myLinkedList.append(thirdNode);
 		myLinkedList.append(fourthNode);
-		MyNode<Integer> delete = (MyNode<Integer>) myLinkedList.deleteAndReturnSizeOfList(40);
-		assertEquals(thirdNode, delete);
+		myLinkedList.deleteAndReturnSizeOfList(thirdNode);
+		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
+				&& myLinkedList.tail.equals(fourthNode);
+		Assert.assertTrue(result);
 		System.out.println(myLinkedList.size());
+		myLinkedList.printMyNodes();
+	}
+
+	@Test
+	public void sortListTest() {
+		MyNode<Integer> firstNode = new MyNode<Integer>(56);
+		MyNode<Integer> secondNode = new MyNode<Integer>(30);
+		MyNode<Integer> thirdNode = new MyNode<Integer>(40);
+		MyNode<Integer> fourthNode = new MyNode<Integer>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(firstNode);
+		myLinkedList.append(secondNode);
+		myLinkedList.append(thirdNode);
+		myLinkedList.append(fourthNode);
+		myLinkedList.sortList();
+		myLinkedList.printMyNodes();
+		boolean result = myLinkedList.head.equals(firstNode) && firstNode.getNext().equals(secondNode)
+				&& secondNode.getNext().equals(thirdNode) && myLinkedList.tail.equals(fourthNode);
+		Assert.assertTrue(result);
+		
 	}
 }
