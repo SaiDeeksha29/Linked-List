@@ -34,7 +34,7 @@ public class MyLinkedListTest {
 				&& myLinkedList.tail.equals(firstNode);
 		Assert.assertTrue(result);
 	}
-	
+
 	@Test
 	public void given3NumbersInsertingSecondIntegerTest() {
 		MyNode<Integer> firstNode = new MyNode<Integer>(56);
@@ -43,9 +43,24 @@ public class MyLinkedListTest {
 		MyLinkedList myLinkedList = new MyLinkedList();
 		myLinkedList.add(firstNode);
 		myLinkedList.append(thirdNode);
-		myLinkedList.insert(firstNode,secondNode);
+		myLinkedList.insert(firstNode, secondNode);
 		boolean result = myLinkedList.head.equals(firstNode) && myLinkedList.head.getNext().equals(secondNode)
 				&& myLinkedList.tail.equals(thirdNode);
 		Assert.assertTrue(result);
 	}
+
+	@Test
+	public void deletingFirstElementTest() {
+		MyNode<Integer> firstNode = new MyNode<Integer>(56);
+		MyNode<Integer> secondNode = new MyNode<Integer>(30);
+		MyNode<Integer> thirdNode = new MyNode<Integer>(70);
+		MyLinkedList myLinkedList = new MyLinkedList();
+		myLinkedList.add(firstNode);
+		myLinkedList.add(secondNode);
+		myLinkedList.add(thirdNode);
+		myLinkedList.pop();
+		boolean result = myLinkedList.head.equals(firstNode);
+		Assert.assertFalse(result);
+	}
+	
 }
