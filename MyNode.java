@@ -1,13 +1,13 @@
 package com.blz.training;
 
-public class MyNode<K> {
+public class MyNode<K> implements INode<K> {
 
 	private K key;
-	private MyNode next;
-	
+	private INode<K> next;
+
 	public MyNode(K key) {
-		this.key=key;
-		this.next=null;
+		this.key = key;
+		this.next = null;
 	}
 
 	public K getKey() {
@@ -18,11 +18,12 @@ public class MyNode<K> {
 		this.key = key;
 	}
 
-	public MyNode getNext() {
+	public INode<K> getNext() {
 		return next;
 	}
 
-	public void setNext(MyNode next) {
-		this.next = next;
+	@Override
+	public void setNext(INode next) {
+		this.next = (INode<K>) next;
 	}
 }
