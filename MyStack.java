@@ -15,6 +15,10 @@ public class MyStack<K> {
 	public INode peak() {
 		return myLinkedList.head;
 	}
+	
+	public INode pop() {
+		return myLinkedList.pop();
+	}
 
 	public void printStack() {
 		myLinkedList.printMyNodes();
