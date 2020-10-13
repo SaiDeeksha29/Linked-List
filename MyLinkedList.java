@@ -24,7 +24,7 @@ public class MyLinkedList<K> {
 		}
 	}
 
-	public void append(INode newNode) {
+	public void append(INode<K> newNode) {
 		if (this.head == null) {
 			this.head = newNode;
 		}
@@ -49,7 +49,7 @@ public class MyLinkedList<K> {
 	}
 
 	public INode popLast() {
-		INode tempNode = head;
+		INode tempNode = this.head;
 		while (!tempNode.getNext().equals(tail)) {
 			tempNode = tempNode.getNext();
 		}
@@ -89,7 +89,7 @@ public class MyLinkedList<K> {
 		INode tempNode = this.head;
 		INode prev = null;
 
-		while (tempNode!= null && tempNode.getKey()!=deleteNode.getKey()) {
+		while (tempNode != null && tempNode.getKey() != deleteNode.getKey()) {
 			prev = tempNode;
 			tempNode = tempNode.getNext();
 		}
@@ -117,25 +117,24 @@ public class MyLinkedList<K> {
 		} else {
 			while (current != null) {
 				index = current.getNext();
-				while(index!=null) {
-					if(maximum(index.getKey(),current.getKey())) {
-						temp=current.getKey();
+				while (index != null) {
+					if (maximum(index.getKey(), current.getKey())) {
+						temp = current.getKey();
 						current.setKey(index.getKey());
 						index.setKey(temp);
 					}
-					index=index.getNext();
+					index = index.getNext();
 				}
-				current=current.getNext();
+				current = current.getNext();
 			}
 		}
 	}
 
 	private static <K extends Comparable<K>> boolean maximum(K key1, K key2) {
-		K max=key1;
-		if(key2.compareTo(max)>0) {
+		K max = key1;
+		if (key2.compareTo(max) > 0) {
 			return true;
-		}
-		else
+		} else
 			return false;
 	}
 
@@ -150,5 +149,10 @@ public class MyLinkedList<K> {
 		}
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
+	}
+
+	@Override
+	public String toString() {
+		return "MyLinkedListNodes{" + head + "}";
 	}
 }
