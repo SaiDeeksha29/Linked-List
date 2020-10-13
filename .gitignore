@@ -3,5 +3,9 @@ MyNodeTest.java
 MyLinkedListTest.java
 MyStackTest.java
 MyStack.java
-MyLinkedHashMap.java
-MyLinkedHashMapTest.java
+MyHashMap.java
+MyHashMapTest.java
+MyQueue.java
+MyQueueTest.java
+MyStack.java
+MyStackTest.java
