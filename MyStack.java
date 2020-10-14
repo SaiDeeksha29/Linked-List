@@ -2,7 +2,7 @@ package com.blz.training;
 
 public class MyStack<K> {
 
-	private final MyLinkedList<K> myLinkedList;
+	private final MyLinkedList myLinkedList;
 
 	public MyStack() {
 		myLinkedList = new MyLinkedList<>();
@@ -15,7 +15,7 @@ public class MyStack<K> {
 	public INode peak() {
 		return myLinkedList.head;
 	}
-	
+
 	public INode pop() {
 		return myLinkedList.pop();
 	}

@@ -3,8 +3,8 @@ package com.blz.training;
 import java.util.ArrayList;
 
 public class MyLinkedHashMap<K, V> {
+
 	private final int numBuckets;
-	private int size;
 	ArrayList<MyLinkedList<K>> myBucketArray;
 
 	public MyLinkedHashMap() {
@@ -38,8 +38,6 @@ public class MyLinkedHashMap<K, V> {
 			myLinkedList = new MyLinkedList<>();
 			this.myBucketArray.set(index, myLinkedList);
 		}
-		size++;
-		
 		MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.search(key);
 		if (myMapNode == null) {
 			myMapNode = new MyMapNode<>(key, value);
@@ -49,12 +47,20 @@ public class MyLinkedHashMap<K, V> {
 		}
 	}
 
-	public int size() {
-		return size;
-	}
-
-	public boolean isEmpty() {
-		return size() == 0;
+	public MyMapNode<K, V> remove(K key) {
+		int index = this.getBucketIndex(key);
+		MyLinkedList<K> myLinkedList = this.myBucketArray.get(index);
+		if (myLinkedList == null) {
+			return null;
+		} else {
+			MyMapNode<K, V> myMapNode = (MyMapNode<K, V>) myLinkedList.delete(key);
+			if (myMapNode == null) {
+				return null;
+			} else {
+				myLinkedList.deleteAndReturnSizeOfList(myMapNode);
+				return myMapNode;
+			}
+		}
 	}
 
 	@Override

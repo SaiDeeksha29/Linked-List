@@ -97,8 +97,21 @@ public class MyLinkedList<K> {
 		tempNode.setNext(null);
 	}
 
+	public INode delete(K key) {
+		INode tempNode = this.head;
+		while (tempNode != null && tempNode.getNext() != null) {
+			if (tempNode.getNext().equals(key)) {
+				break;
+			} else
+				tempNode = tempNode.getNext();
+		}
+		size--;
+		return tempNode;
+	}
+
 	public int size() {
 		INode<K> n = head;
+
 		// for each node in the linked list
 		while (n != null) {
 			size++;
